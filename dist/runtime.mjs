@@ -1,7 +1,7 @@
 import { withLeadingSlash } from 'ufo';
 
-const defaultShouldPrefetch = (resource) => false;
-const defaultShouldPreload = (resource) => false;
+const defaultShouldPrefetch = (resource) => resource && resource.resourceType !== "font";
+const defaultShouldPreload = (resource) => resource && ["module", "script", "style"].includes(resource.resourceType || "");
 function createRendererContext({ manifest, buildAssetsURL, shouldPrefetch, shouldPreload }) {
   const ctx = {
     shouldPrefetch: shouldPrefetch || defaultShouldPrefetch,
