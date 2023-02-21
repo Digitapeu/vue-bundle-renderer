@@ -43,8 +43,8 @@ interface LinkAttributes {
   crossorigin?: '' | null
 }
 
-const defaultShouldPrefetch = (resource: ResourceMeta) => resource.resourceType !== 'font'
-const defaultShouldPreload = (resource: ResourceMeta) => ['module', 'script', 'style'].includes(resource.resourceType || '')
+const defaultShouldPrefetch = (resource: ResourceMeta) => false // resource.resourceType !== 'font'
+const defaultShouldPreload = (resource: ResourceMeta) => false //['module', 'script', 'style'].includes(resource.resourceType || '')
 
 export function createRendererContext ({ manifest, buildAssetsURL, shouldPrefetch, shouldPreload }: RenderOptions): RendererContext {
   const ctx: RendererContext = {
